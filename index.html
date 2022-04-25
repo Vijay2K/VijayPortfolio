@@ -44,50 +44,25 @@
     </section>
     <!-- End Hero Section  -->
 
-    <!-- Service Section -->
-    <section id="services">
-      <div class="services container">
-        <div class="service-top">
-          <h1 class="section-title">Serv<span>i</span>ces</h1>
-        </div>
-        <div class="service-bottom">
-          <div class="service-item">
-            <div class="icon">
-              <img
-                src="https://img.icons8.com/bubbles/100/000000/services.png"
-              />
-            </div>
-            <h2>Game Development</h2>
-            <p>
-              I have developed over 4 games and have worked extensively in both
-              2D and 3D. Also I have published my 2 games in google play store.
-            </p>
-          </div>
-          <div class="service-item">
-            <div class="icon">
-              <img
-                src="https://img.icons8.com/bubbles/100/000000/services.png"
-              />
-            </div>
-            <h2>Game Design</h2>
-            <p>
-              I have done lot of level designing in both 2D and 3D games. And I
-              also have some basic understanding of 3D modelling using blender.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Service Section -->
-
     <!-- Projects Section -->
     <section id="projects">
       <div class="projects container">
         <div class="projects-header">
           <h1 class="section-title">Recent <span>Projects</span></h1>
         </div>
+
+        <!--Filter Projects-->
+
+        <ul class="project-filter">
+          <li class="list project-filter-active" data-filter="all">All</li>
+          <li class="list" data-filter="freelance">Freelancing Projects</li>
+          <li class="list" data-filter="personal">Personal Projects</li>
+        </ul>
+
+        <!--End Filter projects-->
+
         <div class="all-projects">
-          <div class="project-item">
+          <div class="project-item personal">
             <div class="project-info">
               <h1>Zombie Shooter</h1>
               <!-- <h2>Zombie Shooter</h2> -->
@@ -113,7 +88,7 @@
               <img src="./img/ZombieShooter.jpg" alt="img" />
             </div>
           </div>
-          <div class="project-item">
+          <div class="project-item personal">
             <div class="project-info">
               <h1>Candy Catch</h1>
               <!-- <h2>Candy Catch</h2> -->
@@ -145,7 +120,7 @@
               <img src="./img/Candy Catch 3.jpg" alt="img" />
             </div>
           </div>
-          <div class="project-item">
+          <div class="project-item freelance">
             <div class="project-info">
               <h1>Mossy Walk</h1>
               <!-- <h2>Mossy Walk</h2> -->
@@ -178,7 +153,7 @@
               <img src="./img/2.jpg" alt="img" />
             </div>
           </div>
-          <div class="project-item">
+          <div class="project-item freelance">
             <div class="project-info">
               <h1>Zombie Survivor (Top Down Shooter)</h1>
               <!-- <h2>Zombie Survivor (Top Down Shooter)</h2> -->
@@ -318,7 +293,38 @@
       </div>
     </section>
     <!-- End Footer -->
+
     <script src="https://use.fontawesome.com/bfa360d959.js"></script>
     <script src="./app.js"></script>
+
+    <script src="/JQuery.js"></script>
+    <script src="lightbox.min.js"></script>
+
+    <script type="text/javascript">
+      /*--for-filter-menu---------------------------------*/
+      $(document).on("click", ".project-filter li", function () {
+        $(this)
+          .addClass("project-filter-active")
+          .siblings()
+          .removeClass("project-filter-active");
+      });
+
+      /*--for-project/work-filter-------------------------*/
+      $(document).ready(function () {
+        $(".list").click(function () {
+          const value = $(this).attr("data-filter");
+          if (value == "all") {
+            $(".project-item").show("1000");
+          } else {
+            $(".project-item")
+              .not("." + value)
+              .hide("1000");
+            $(".project-item")
+              .filter("." + value)
+              .show("1000");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
